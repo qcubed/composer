@@ -113,11 +113,14 @@ class Installer extends LibraryInstaller
 			chmod ($strTargetDir, 0777);
 		}
 
-		// fix up the configuration file
-		$strFile = file_get_contents($strConfigDirectory . '/configuration.inc.sample.php');
-		if ($strFile) {
-			$strFile = str_replace (['{docroot}', '{vd}', '{subdir}'], [$strDocRoot, '', $strSubDirectory], $strFile);
-			file_put_contents($strConfigDirectory . '/configuration.inc.php', $strFile);
+		// write configuration.inc.php only if it does not exists
+		if (!file_exists($strConfigDirectory . '/configuration.inc.php')) {
+			// fix up the configuration file
+			$strFile = file_get_contents($strConfigDirectory . '/configuration.inc.sample.php');
+			if ($strFile) {
+				$strFile = str_replace (['{docroot}', '{vd}', '{subdir}'], [$strDocRoot, '', $strSubDirectory], $strFile);
+				file_put_contents($strConfigDirectory . '/configuration.inc.php', $strFile);
+			}
 		}
 	}
 
