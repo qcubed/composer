@@ -52,7 +52,7 @@ class Installer extends LibraryInstaller
 		if (self::startsWith($strPackageName, 'qcubed/plugin')) {
 			$this->composerPluginInstall($package);
 		}
-		elseif (self::startsWith($strPackageName, 'qcubed/framework')) {
+		elseif (self::startsWith($strPackageName, 'qcubed/qcubed')) {
 			// updating the framework
 			$this->composerFrameworkInstall($package);
 		}
@@ -64,7 +64,7 @@ class Installer extends LibraryInstaller
 	 * @param $strPackageName
 	 */
 	protected function composerPluginInstall ($package) {
-		require_once(($this->vendorDir ? $this->vendorDir . '/' : '') . 'qcubed/framework/qcubed.inc.php');	// get the configuration options so we can know where to put the plugin files
+		require_once(($this->vendorDir ? $this->vendorDir . '/' : '') . 'qcubed/qcubed/qcubed.inc.php');	// get the configuration options so we can know where to put the plugin files
 
 		// recursively copy the contents of the install subdirectory in the plugin.
 		$strPluginDir = $this->getPackageBasePath($package);
@@ -139,7 +139,7 @@ class Installer extends LibraryInstaller
 		if (self::startsWith($strPackageName, 'qcubed/plugin')) {
 			$this->composerPluginInstall($target);
 		}
-		elseif (self::startsWith($strPackageName, 'qcubed/framework')) {
+		elseif (self::startsWith($strPackageName, 'qcubed/qcubed')) {
 			// updating the framework
 			$this->composerFrameworkUpdate($target);
 		}
@@ -164,7 +164,7 @@ class Installer extends LibraryInstaller
 	 * @param $package
 	 */
 	protected function composerFrameworkUpdate ($package) {
-		require_once(($this->vendorDir ? $this->vendorDir . '/' : '') . 'qcubed/framework/qcubed.inc.php');	// get the configuration options so we can know where to put the plugin files
+		require_once(($this->vendorDir ? $this->vendorDir . '/' : '') . 'qcubed/qcubed/qcubed.inc.php');	// get the configuration options so we can know where to put the plugin files
 
 		// recursively copy the contents of the install directory, providing each file is not there.
 		$strInstallDir = $this->getPackageBasePath($package) . '/install/project';
@@ -197,7 +197,7 @@ class Installer extends LibraryInstaller
 	 * @param PackageInterface $package
 	 */
 	public function composerPluginUninstall (PackageInterface $package) {
-		require_once(($this->vendorDir ? $this->vendorDir . '/' : '') . 'qcubed/framework/qcubed.inc.php');	// get the configuration options so we can know where the plugin files are
+		require_once(($this->vendorDir ? $this->vendorDir . '/' : '') . 'qcubed/qcubed/qcubed.inc.php');	// get the configuration options so we can know where the plugin files are
 
 		// recursively delete the contents of the install directory, providing each file is there.
 		$strPluginDir = $this->getPackageBasePath($package) . '/install';
