@@ -25,7 +25,7 @@ class Installer extends LibraryInstaller
 	public function supports($packageType)
 	{
 		return ('qcubed-plugin' === $packageType ||
-			'qcubed-qcubed' === $packageType);
+			'qcubed-framework' === $packageType);
 	}
 
 	public function getInstallPath(PackageInterface $package) {
