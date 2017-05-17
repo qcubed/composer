@@ -192,11 +192,11 @@ class Installer extends LibraryInstaller
     {
         require_once(__DIR__ . '/qcubed.inc.php');    // get the configuration options so we can know where to put the plugin files
 
-        if (!defined('QCUBED_PROJECT_CONFIGURATION_DIR')) {
+        if (!defined('QCUBED_CONFIG_DIR')) {
             return; // we can't find the registry
         }
 
-        $targetDir = QCUBED_PROJECT_CONFIGURATION_DIR . '/control_registry';
+        $targetDir = QCUBED_CONFIG_DIR . '/control_registry';
         $srcDir = $this->getPackageBasePath($package) . '/install/project/includes/configuration/control_registry';
 
         self::removeMatchingFiles($srcDir, $targetDir);
